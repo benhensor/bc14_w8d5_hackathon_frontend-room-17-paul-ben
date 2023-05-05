@@ -1,7 +1,7 @@
 import React from "react";
 import "./Button.css";
 
-function Button({ setCountry, handleSearchClick }) {
+function Button({ handleSearchClick }) {
   return <button onClick={handleSearchClick}>Search</button>;
 }
 

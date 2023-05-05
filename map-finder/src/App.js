@@ -5,13 +5,22 @@ import NavBar from "./components/NavBar/Navbar";
 import CardDisplay from "./components/CardDisplay/CardDisplay";
 
 function App() {
-  const [content, setContent] = useState([]);
+
+  // States
+  const [country, setCountry] = useState(null);
+  const [content, setContent] = useState("");
+  const [showCard, setShowCard] = useState(false);
+  const [randomCountry, setRandomCountry] = useState([]);
+
+  const url = `https://restcountries.com/v3.1/name/${country}`;
+
 
   async function getApiData(country) {
     const url = `https://restcountries.com/v3.1/name/${country}`;
     const response = await fetch(url);
     const data = await response.json();
-    return data[0];
+    setContent(data);
+    console.log(data);
   }
 
   useEffect(() => {
@@ -25,7 +34,7 @@ function App() {
         const countryData = await getApiData(randomCountry.name.common);
         countries.push(countryData);
       }
-      setContent(countries);
+      setRandomCountry(countries);
     }
     fetchData();
   }, []);
@@ -39,6 +48,10 @@ function App() {
 
   // handleClick function for search button
   async function handleSearchClick() {
+
+    await getApiData();
+    setShowCard(true);
+
     console.log("clicked");
   }
 
@@ -48,8 +61,9 @@ function App() {
       <SearchContainer
         handleSearchChange={handleSearchChange}
         handleSearchClick={handleSearchClick}
+        showCard={showCard}
       />
-      <CardDisplay content={content} />
+      <CardDisplay content={content} showCard={showCard} />
     </div>
   );
 }
