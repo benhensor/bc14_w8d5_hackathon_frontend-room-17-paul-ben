@@ -1,16 +1,16 @@
-import React from 'react'
-import './Card.css';
-import canadaFlag from '../../assets/flag-canada.webp';
+import React from "react";
+import "./Card.css";
+import canadaFlag from "../../assets/flag-canada.webp";
 
-const Card = ({ country }) => {
+const Card = ({ country, content }) => {
   return (
-    <div key={country} className="card-container">
-    <div className="country-flag-container">
-      <img className="country-flag" src={canadaFlag} alt="" />
-    </div>
+    <div key={content} className="card-container">
+      <div className="country-flag-container">
+        <img className="country-flag" src={canadaFlag} alt="" />
+      </div>
       <div className="country-details-container">
         {/* <img className="country-arms" src="../logo.svg" alt="" /> */}
-        <h3 className="country-title">{country[0].name}</h3>
+        <h3 className="country-title">{content}</h3>
         <div className="country-details">
           <p>Population:{}</p>
           <p>Region:{}</p>
