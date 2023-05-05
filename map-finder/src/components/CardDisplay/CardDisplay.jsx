@@ -1,18 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../Card/Card";
 import "./CardDisplay.css";
 
-const CardDisplay = ({ content }) => {
+const CardDisplay = ({ showCard, content }) => {
   return (
     <section className="card-display-container">
-      <Card content={content} />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {showCard && <Card content={content} />}
     </section>
   );
 };

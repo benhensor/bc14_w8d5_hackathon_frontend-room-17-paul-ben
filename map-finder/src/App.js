@@ -31,15 +31,17 @@ import NavBar from "./components/NavBar/Navbar";
 import CardDisplay from "./components/CardDisplay/CardDisplay";
 
 function App() {
+  // States
   const [country, setCountry] = useState(null);
   const [content, setContent] = useState("");
+  const [showCard, setShowCard] = useState(false);
 
   const url = `https://restcountries.com/v3.1/name/${country}`;
 
   async function getApiData() {
     const response = await fetch(url);
     const data = await response.json();
-    setContent(data)
+    setContent(data);
     console.log(data);
   }
   useEffect(() => {
@@ -59,6 +61,7 @@ function App() {
   // handleClick function for search button
   async function handleSearchClick() {
     await getApiData();
+    setShowCard(true);
     console.log("clicked");
   }
 
@@ -69,8 +72,9 @@ function App() {
         setCountry={setCountry}
         handleSearchChange={handleSearchChange}
         handleSearchClick={handleSearchClick}
+        showCard={showCard}
       />
-      <CardDisplay content={content} />
+      <CardDisplay content={content} showCard={showCard} />
     </div>
   );
 }
