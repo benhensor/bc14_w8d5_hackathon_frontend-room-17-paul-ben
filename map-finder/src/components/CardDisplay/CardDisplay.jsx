@@ -13,7 +13,6 @@ const CardDisplay = () => {
     <Card/>
     <Card/>
     <Card/>
-    <Card/>
     </section>
   )
 }

@@ -26,8 +26,10 @@
 // include links to maps 
 // results to be sortable by a range of criteria such as population etc.
 
-import logo from './logo.svg';
 import './App.css';
+import SearchContainer from './components/SearchContainer/SearchContainer';
+import NavBar from './components/NavBar/Navbar';
+import CardDisplay from './components/CardDisplay/CardDisplay';
 
 
 
@@ -36,9 +38,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+      <NavBar/>
+      <SearchContainer/>
+      <CardDisplay/>
     </div>
   );
 }
