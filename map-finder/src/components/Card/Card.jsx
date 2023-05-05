@@ -1,4 +1,5 @@
 import React from 'react'
+import './Card.css';
 import canadaFlag from '../assets/flag-canada.webp';
 
 const Card = () => {
