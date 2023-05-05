@@ -3,16 +3,18 @@ import Card from "../Card/Card";
 import "./CardDisplay.css";
 
 const CardDisplay = ({ content }) => {
+  const randomCountries = content ? getRandomCountries(content, 8) : [];
+  
+  function getRandomCountries(countries, count) {
+    const shuffled = countries.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  }
+
   return (
     <section className="card-display-container">
-      <Card content={content} />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {randomCountries.map(country => (
+        <Card key={country.name.common} content={[country]} />
+      ))}
     </section>
   );
 };
