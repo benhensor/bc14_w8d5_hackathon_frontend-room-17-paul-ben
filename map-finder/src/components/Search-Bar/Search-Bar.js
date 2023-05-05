@@ -6,7 +6,7 @@ function Searchbar({ setCountry, handleSearchChange, handleSearchClick }) {
   return (
     <div className="searchBar">
       <input placeholder="Search" onChange={handleSearchChange}></input>
-      <Button onClick={handleSearchClick}/>
+      <Button handleSearchClick={handleSearchClick}/>
     </div>
   );
 }

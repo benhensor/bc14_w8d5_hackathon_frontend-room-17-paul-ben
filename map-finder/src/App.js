@@ -39,20 +39,20 @@ import CardDisplay from './components/CardDisplay/CardDisplay';
 
 function App() {
 
-  const [country, setCountry] = useState()
+  const [country, setCountry] = useState(null)
 
 
 
   const url = `https://restcountries.com/v3.1/name/${country}`
 
   useEffect(() => {
-    async function getApiData() {
+    async function getApiData(country) {
       const response = await fetch(url);
       const data = await response.json();
       console.log(data);
       setCountry(data);
     }
-    getApiData()
+    //getApiData()
   }, [country]);
 
 // handleChange function for search input
@@ -60,12 +60,14 @@ function App() {
 function handleSearchChange(e) {
   const searchInput = e.currentTarget.value;
   setCountry(searchInput);
+  //console.log(searchInput);
 }
 
 // handleClick function for search button
 
-function handleSearchClick(e) {
-
+function handleSearchClick() {
+ setCountry(country);
+ //console.log('clicked'); 
 }
 
   return (
