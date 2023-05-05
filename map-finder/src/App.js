@@ -26,6 +26,7 @@
 // include links to maps 
 // results to be sortable by a range of criteria such as population etc.
 
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import SearchContainer from './components/SearchContainer/SearchContainer';
 import NavBar from './components/NavBar/Navbar';
@@ -35,11 +36,42 @@ import CardDisplay from './components/CardDisplay/CardDisplay';
 
 
 
+
 function App() {
+
+  const [country, setCountry] = useState()
+
+
+
+  const url = `https://restcountries.com/v3.1/name/${country}`
+
+  useEffect(() => {
+    async function getApiData() {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+      setCountry(data);
+    }
+    getApiData()
+  }, [country]);
+
+// handleChange function for search input
+
+function handleSearchChange(e) {
+  const searchInput = e.currentTarget;
+  setCountry(searchInput);
+}
+
+// handleClick function for search button
+
+
   return (
     <div className="App">
-      <NavBar/>
-      <SearchContainer/>
+      <NavBar />
+      <SearchContainer 
+      setCountry={setCountry}
+      handleSearchChange={handleSearchChange}
+      />
       <CardDisplay/>
     </div>
   );

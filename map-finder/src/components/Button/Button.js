@@ -1,7 +1,7 @@
 import React from "react";
 import "./Button.css";
 
-function Button() {
+function Button({ setCountry }) {
   return <button>Search</button>;
 }
 

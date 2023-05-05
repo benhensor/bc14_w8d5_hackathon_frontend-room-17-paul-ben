@@ -3,10 +3,13 @@ import Searchbar from "../Search-Bar/Search-Bar";
 import Filter from "../Filter/Filter";
 import "./SearchContainer.css";
 
-function SearchContainer() {
+function SearchContainer({ setCountry, handleSearchChange }) {
   return (
     <div className="searchContainer">
-      <Searchbar />
+      <Searchbar 
+        setCountry={setCountry}
+        handleSearchChange={handleSearchChange}
+      />
       <Filter />
     </div>
   );

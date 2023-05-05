@@ -2,7 +2,7 @@ import React from 'react'
 import './Card.css';
 import canadaFlag from '../../assets/flag-canada.webp';
 
-const Card = () => {
+const Card = ({ country }) => {
   return (
     <div className="card-container">
     <div className="country-flag-container">
@@ -10,7 +10,7 @@ const Card = () => {
     </div>
       <div className="country-details-container">
         {/* <img className="country-arms" src="../logo.svg" alt="" /> */}
-        <h3 className="country-title">Canada</h3>
+        <h3 className="country-title">{country.name.common}</h3>
         <div className="country-details">
           <p>Population:{}</p>
           <p>Region:{}</p>
