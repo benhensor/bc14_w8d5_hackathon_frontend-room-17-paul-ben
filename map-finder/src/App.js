@@ -58,12 +58,15 @@ function App() {
 // handleChange function for search input
 
 function handleSearchChange(e) {
-  const searchInput = e.currentTarget;
+  const searchInput = e.currentTarget.value;
   setCountry(searchInput);
 }
 
 // handleClick function for search button
 
+function handleSearchClick(e) {
+
+}
 
   return (
     <div className="App">
@@ -71,6 +74,7 @@ function handleSearchChange(e) {
       <SearchContainer 
       setCountry={setCountry}
       handleSearchChange={handleSearchChange}
+      handleSearchClick={handleSearchClick}
       />
       <CardDisplay/>
     </div>

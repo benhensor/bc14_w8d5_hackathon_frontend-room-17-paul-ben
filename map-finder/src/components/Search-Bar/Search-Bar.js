@@ -2,11 +2,11 @@ import React from "react";
 import Button from "../Button/Button";
 import "./Search-Bar.css";
 
-function Searchbar({ setCountry, handleSearchChange }) {
+function Searchbar({ setCountry, handleSearchChange, handleSearchClick }) {
   return (
     <div className="searchBar">
-      <input placeholder="Search"></input>
-      <Button setCountry={setCountry}/>
+      <input placeholder="Search" onChange={handleSearchChange}></input>
+      <Button onClick={handleSearchClick}/>
     </div>
   );
 }
