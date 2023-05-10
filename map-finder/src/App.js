@@ -4,66 +4,47 @@ import SearchContainer from "./components/SearchContainer/SearchContainer";
 import NavBar from "./components/NavBar/Navbar";
 import CardDisplay from "./components/CardDisplay/CardDisplay";
 
+
+
+
 function App() {
 
-  // States
-  const [country, setCountry] = useState(null);
-  const [content, setContent] = useState("");
-  const [showCard, setShowCard] = useState(false);
-  const [randomCountry, setRandomCountry] = useState([]);
-
-  const url = `https://restcountries.com/v3.1/name/${country}`;
-
-
-  async function getApiData(country) {
-    const url = `https://restcountries.com/v3.1/name/${country}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    setContent(data);
-    console.log(data);
-  }
+  const [countryData, setCountryData] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const countries = [];
-      for (let i = 0; i < 8; i++) {
-        const response = await fetch("https://restcountries.com/v3.1/all");
+    async function fetchCountriesData() {
+      try {
+        const response = await fetch('http://api.countrylayer.com/v2/all?access_key=a51ee900e070d72bdd511cdc70f42771');
         const data = await response.json();
-        const randomIndex = Math.floor(Math.random() * data.length);
-        const randomCountry = data[randomIndex];
-        const countryData = await getApiData(randomCountry.name.common);
-        countries.push(countryData);
+        const formattedData = data.map((country) => {
+          return {
+            name: country.name,
+            capital: country.capital,
+            region: country.region,
+            subregion: country.subregion,
+            currency: country.currency,
+            flag: country.flag,
+          };
+        });
+        setCountryData(formattedData);
+      } catch (error) {
+      console.error(error);
       }
-      setRandomCountry(countries);
     }
-    fetchData();
-  }, []);
+      fetchCountriesData();
+    }, []);
 
-  // handleChange function for search input
-
-  function handleSearchChange(e) {
-    const searchInput = e.currentTarget.value;
-    //console.log(searchInput);
-  }
-
-  // handleClick function for search button
-  async function handleSearchClick() {
-
-    await getApiData();
-    setShowCard(true);
-
-    console.log("clicked");
-  }
 
   return (
     <div className="App">
+    <header>
       <NavBar />
-      <SearchContainer
-        handleSearchChange={handleSearchChange}
-        handleSearchClick={handleSearchClick}
-        showCard={showCard}
-      />
-      <CardDisplay content={content} showCard={showCard} />
+    </header>
+    
+    
+      
+      <SearchContainer />
+      {/* <CardDisplay countryData={countryData}/> */}
     </div>
   );
 }
