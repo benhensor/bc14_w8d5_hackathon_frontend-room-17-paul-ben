@@ -1,5 +1,7 @@
 ## Hackathon Friday 
 
+This is the hackathon from week 8 of the SoC bootcamp. I worked with Paul Garton on this project for the day, we decided to attempt the map finder api task. Overall we were able to successfully call the api and populate the fields of a card with data chosen from the api. We hit a few obstacles along the way, namely the api being called in endless loops and some challenges in implementing the search filters but a good day and a fun challenge. Working with api's is really interesting and I am looking forward to more opportunities to practice.
+
 **Some inspiration** 
 > Be not afraid of growing slowly, be afraid of standing still. - *Chinese Proverb*
 
